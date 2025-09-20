@@ -1,0 +1,298 @@
+# Development Dependencies for Football Match Predictor
+# This file includes all dependencies needed for development, testing, and code quality
+
+# Production dependencies
+-r requirements.txt
+
+# =============================================================================
+# TESTING FRAMEWORKS
+# =============================================================================
+
+# Core testing framework
+pytest>=7.4.0
+
+# Async testing support
+pytest-asyncio>=0.21.0
+
+# Test coverage reporting
+pytest-cov>=4.1.0
+
+# Mocking and fixtures
+pytest-mock>=3.11.0
+
+# Parallel test execution
+pytest-xdist>=3.3.0
+
+# Test reporting and output formatting
+pytest-html>=3.2.0
+pytest-json-report>=1.5.0
+
+# Property-based testing
+hypothesis>=6.82.0
+
+# HTTP testing
+httpx>=0.24.0
+pytest-httpx>=0.21.0
+
+# =============================================================================
+# CODE QUALITY AND FORMATTING
+# =============================================================================
+
+# Code formatting
+black>=23.7.0
+
+# Import sorting
+isort>=5.12.0
+
+# Linting
+flake8>=6.0.0
+flake8-docstrings>=1.7.0
+flake8-import-order>=0.18.0
+flake8-bugbear>=23.7.0
+flake8-comprehensions>=3.14.0
+
+# Type checking
+mypy>=1.5.0
+types-redis>=4.6.0
+types-requests>=2.31.0
+
+# Security scanning
+bandit>=1.7.0
+safety>=2.3.0
+
+# Complexity analysis
+radon>=6.0.0
+xenon>=0.9.0
+
+# =============================================================================
+# PRE-COMMIT HOOKS
+# =============================================================================
+
+# Pre-commit framework
+pre-commit>=3.3.0
+
+# =============================================================================
+# DEBUGGING AND PROFILING
+# =============================================================================
+
+# Interactive debugger
+ipdb>=0.13.0
+
+# Memory profiling
+memory-profiler>=0.61.0
+
+# Line profiling
+line-profiler>=4.1.0
+
+# Performance profiling
+py-spy>=0.3.0
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+
+# Documentation generator
+mkdocs>=1.5.0
+mkdocs-material>=9.1.0
+mkdocs-mermaid2-plugin>=1.1.0
+
+# API documentation
+mkdocs-swagger-ui-tag>=0.6.0
+
+# =============================================================================
+# DEVELOPMENT UTILITIES
+# =============================================================================
+
+# Environment management
+python-dotenv>=1.0.0
+
+# HTTP client for testing
+requests>=2.31.0
+
+# JSON manipulation
+jq>=1.6.0
+
+# YAML processing
+PyYAML>=6.0.0
+
+# Configuration validation
+pydantic-settings>=2.0.0
+
+# =============================================================================
+# DATABASE TOOLS (Future Use)
+# =============================================================================
+
+# Database migrations (for future use)
+# alembic>=1.11.0
+
+# Database testing
+# pytest-postgresql>=5.0.0
+
+# =============================================================================
+# MONITORING AND OBSERVABILITY
+# =============================================================================
+
+# Prometheus client (already in main requirements)
+# prometheus-client>=0.17.0
+
+# Structured logging
+structlog>=23.1.0
+
+# =============================================================================
+# LOAD TESTING
+# =============================================================================
+
+# Load testing framework
+locust>=2.16.0
+
+# =============================================================================
+# MOCK SERVICES
+# =============================================================================
+
+# HTTP mocking
+responses>=0.23.0
+httpretty>=1.1.0
+
+# Redis mocking
+fakeredis>=2.18.0
+
+# =============================================================================
+# DATA ANALYSIS (for ML model development)
+# =============================================================================
+
+# Data manipulation
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Statistical analysis
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# Plotting and visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Jupyter notebook support
+jupyter>=1.0.0
+ipykernel>=6.25.0
+
+# =============================================================================
+# API TESTING
+# =============================================================================
+
+# API testing framework
+tavern>=2.0.0
+
+# OpenAPI validation
+openapi-spec-validator>=0.6.0
+
+# =============================================================================
+# CONTAINERIZATION
+# =============================================================================
+
+# Docker utilities
+docker>=6.1.0
+docker-compose>=1.29.0
+
+# =============================================================================
+# CI/CD UTILITIES
+# =============================================================================
+
+# GitHub Actions utilities
+# (These are typically installed in CI environment)
+# coverage>=7.2.0
+# codecov>=2.1.0
+
+# =============================================================================
+# DEVELOPMENT SERVERS
+# =============================================================================
+
+# Development server with auto-reload (already in main requirements)
+# uvicorn[standard]>=0.23.0
+
+# =============================================================================
+# ADDITIONAL TESTING UTILITIES
+# =============================================================================
+
+# Time manipulation for testing
+freezegun>=1.2.0
+
+# Factory for creating test data
+factory-boy>=3.3.0
+
+# Faker for generating test data
+Faker>=19.3.0
+
+# =============================================================================
+# LINTING PLUGINS
+# =============================================================================
+
+# Additional flake8 plugins
+flake8-annotations>=3.0.0
+flake8-bandit>=4.1.0
+flake8-black>=0.3.0
+flake8-isort>=6.0.0
+flake8-pytest-style>=1.7.0
+
+# =============================================================================
+# TYPE CHECKING EXTENSIONS
+# =============================================================================
+
+# Additional type stubs
+types-python-dateutil>=2.8.0
+types-setuptools>=68.0.0
+
+# =============================================================================
+# DEVELOPMENT WORKFLOW TOOLS
+# =============================================================================
+
+# Git hooks
+gitpython>=3.1.0
+
+# Changelog generation
+gitchangelog>=3.0.0
+
+# Version bumping
+bump2version>=1.0.0
+
+# =============================================================================
+# PERFORMANCE MONITORING
+# =============================================================================
+
+# Application performance monitoring
+# (These might be added based on specific needs)
+# psutil>=5.9.0
+# py-cpuinfo>=9.0.0
+
+# =============================================================================
+# NOTES FOR DEVELOPERS
+# =============================================================================
+
+# Installation instructions:
+# 1. Create virtual environment: python -m venv venv
+# 2. Activate virtual environment: source venv/bin/activate (Linux/Mac) or venv\Scripts\activate (Windows)
+# 3. Install development dependencies: pip install -r requirements-dev.txt
+# 4. Install pre-commit hooks: pre-commit install
+# 5. Run tests: pytest
+# 6. Run linting: flake8 app/ tests/
+# 7. Format code: black app/ tests/
+# 8. Sort imports: isort app/ tests/
+# 9. Type check: mypy app/
+
+# Common development commands:
+# - Run all quality checks: pre-commit run --all-files
+# - Run tests with coverage: pytest --cov=app --cov-report=html
+# - Generate documentation: mkdocs serve
+# - Profile application: python -m cProfile -o profile.stats -m app.main
+# - Security scan: bandit -r app/
+# - Dependency vulnerability check: safety check
+
+# IDE Configuration:
+# - VS Code: Install Python extension and configure settings.json
+# - PyCharm: Configure interpreter and enable code quality tools
+# - Vim/Neovim: Install appropriate plugins for Python development
+
+# Troubleshooting:
+# - If installation fails, try upgrading pip: pip install --upgrade pip
+# - For M1 Mac issues, use: pip install --no-use-pep517 <package>
+# - For Windows issues, ensure Visual Studio Build Tools are installed

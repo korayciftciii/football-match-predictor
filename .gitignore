@@ -1,0 +1,358 @@
+# =====================================================================
+# FOOTBALL MATCH PREDICTOR - .gitignore
+# =====================================================================
+# This file excludes sensitive data, build artifacts, and temporary files
+# from version control. Organized by category for maintainability.
+
+# =====================================================================
+# PYTHON ENVIRONMENT
+# =====================================================================
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.env/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+test-reports/
+.nyc_output/
+
+# =====================================================================
+# SENSITIVE CONFIGURATION & API KEYS
+# =====================================================================
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+.env.example
+
+# Configuration files with secrets
+config/secrets.yaml
+config/secrets.json
+config/production.yaml
+config/production.json
+secrets/
+*.pem
+*.key
+*.crt
+*.cert
+
+# API Keys and tokens (just in case)
+api_keys.txt
+tokens.txt
+credentials.json
+auth.json
+
+# =====================================================================
+# APPLICATION-SPECIFIC FILES
+# =====================================================================
+
+# Log files
+logs/
+*.log
+log/
+
+# Cache files
+cache/
+.cache/
+*.cache
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data.db
+
+# Model files (large binary files)
+models/*.joblib
+models/*.pkl
+models/*.pickle
+models/*.h5
+models/*.pt
+models/*.pth
+scalers/*.joblib
+scalers/*.pkl
+
+# Temporary data files
+data/
+temp/
+tmp/
+*.tmp
+
+# ML/AI outputs
+outputs/
+results/
+predictions/
+training_data/
+processed_data/
+
+# =====================================================================
+# DEVELOPMENT TOOLS
+# =====================================================================
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Pylint
+.pylint.d/
+
+# =====================================================================
+# DOCKER & CONTAINERS
+# =====================================================================
+
+# Docker volumes and data
+docker-data/
+docker-volumes/
+.docker/
+
+# Docker override files
+docker-compose.override.yml
+docker-compose.local.yml
+
+# =====================================================================
+# OPERATING SYSTEM FILES
+# =====================================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =====================================================================
+# WEB & FRONTEND (if applicable)
+# =====================================================================
+
+# Node.js (if using any JS tooling)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Static assets
+static/
+assets/
+public/
+
+# =====================================================================
+# MONITORING & ANALYTICS
+# =====================================================================
+
+# Prometheus data
+prometheus/
+grafana/data/
+monitoring/data/
+
+# Performance profiling
+*.prof
+profile_*
+
+# =====================================================================
+# CLOUD & DEPLOYMENT
+# =====================================================================
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Kubernetes
+kube-config
+*.kubeconfig
+
+# AWS
+.aws/
+aws-credentials
+
+# Google Cloud
+gcloud/
+service-account.json
+
+# Azure
+.azure/
+
+# =====================================================================
+# BACKUP & TEMPORARY FILES
+# =====================================================================
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# Patch files
+*.patch
+*.diff
+
+# =====================================================================
+# DOCUMENTATION BUILD FILES
+# =====================================================================
+
+# Sphinx documentation
+docs/_build/
+docs/build/
+site/
+
+# =====================================================================
+# PROJECT-SPECIFIC EXCLUSIONS
+# =====================================================================
+
+# Large datasets
+datasets/
+raw_data/
+processed_data/
+*.csv.gz
+*.parquet
+
+# Match data cache
+match_cache/
+team_cache/
+player_cache/
+
+# Generated reports
+reports/
+analysis_results/
+
+# Bot session data
+sessions/
+user_data/
+
+# Telegram bot files
+telegram_data/
+bot_state/
+
+# API response cache
+api_cache/
+response_cache/
+
+# Model training artifacts
+training_logs/
+model_checkpoints/
+wandb/
+
+# =====================================================================
+# NOTES
+# =====================================================================
+# 
+# To add files that should be tracked despite being in .gitignore:
+# git add -f <filename>
+#
+# To check what files are being ignored:
+# git status --ignored
+#
+# To temporarily ignore tracked files:
+# git update-index --assume-unchanged <filename>
+#
+# To start tracking again:
+# git update-index --no-assume-unchanged <filename>
+#
