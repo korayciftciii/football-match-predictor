@@ -279,7 +279,7 @@ class TestCacheDecorators:
         
         assert "arg1" in key
         assert "42" in key
-        assert "keyword_value" in key
+        assert "keyword=value" in key
     
     @pytest.mark.asyncio
     async def test_cached_decorator_hit(self):

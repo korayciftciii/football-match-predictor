@@ -180,7 +180,8 @@ class TestFootballDataFetcher:
     @pytest.mark.asyncio
     async def test_make_request_rate_limit(self, fetcher):
         """Test handling of rate limit errors."""
-        with patch('httpx.AsyncClient') as mock_client:
+        with patch('httpx.AsyncClient') as mock_client, \
+             patch('asyncio.sleep') as mock_sleep:
             mock_response = MagicMock()
             mock_response.status_code = 429
             mock_response.text = "Rate limit exceeded"
@@ -196,6 +197,9 @@ class TestFootballDataFetcher:
             
             with pytest.raises(APIFootballError, match="Rate limit exceeded"):
                 await fetcher._make_request("fixtures")
+            
+            # Verify that sleep was called with 60 seconds
+            mock_sleep.assert_called_once_with(60)
     
     @pytest.mark.asyncio
     async def test_get_recent_matches(self, fetcher, mock_match_response):
@@ -212,9 +216,11 @@ class TestFootballDataFetcher:
     async def test_health_check_success(self, fetcher):
         """Test successful health check."""
         mock_response = {
-            "requests": {
-                "current": 50,
-                "limit_day": 100
+            "response": {
+                "requests": {
+                    "current": 50,
+                    "limit_day": 100
+                }
             }
         }
         

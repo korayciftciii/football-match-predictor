@@ -335,34 +335,12 @@ cache_manager = CacheManager()
 
 def cache_key_builder(*args, **kwargs) -> str:
     """Build a cache key from function arguments."""
-    key_parts = []
-    
-    # Add positional arguments
-    for arg in args:
-        if hasattr(arg, '__dict__'):
-            # For objects, use class name and id
-            key_parts.append(f"{arg.__class__.__name__}_{id(arg)}")
-        else:
-            key_parts.append(str(arg))
-    
-    # Add keyword arguments
-    for k, v in sorted(kwargs.items()):
-        key_parts.append(f"{k}_{v}")
-    
-    return ":".join(key_parts)
-
-
-def cache_key_builder(*args, **kwargs) -> str:
-    """Build a cache key from function arguments."""
     try:
         # Convert args and kwargs to a consistent string
         key_parts = []
         
-        # Add positional args (skip 'self' if present)
-        for i, arg in enumerate(args):
-            if i == 0 and hasattr(arg, '__class__'):
-                # Skip 'self' parameter
-                continue
+        # Add positional args
+        for arg in args:
             key_parts.append(str(arg))
         
         # Add keyword args

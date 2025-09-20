@@ -358,12 +358,13 @@ class MatchAnalyzer:
             
             try:
                 card_prediction_dict = await self.advanced_ml.predict_cards_advanced(match_data)
-                card_prediction = type('CardPrediction', (), {
-                    'home_team_cards': card_prediction_dict['home_team_cards'],
-                    'away_team_cards': card_prediction_dict['away_team_cards'],
-                    'total_cards': card_prediction_dict['total_cards'],
-                    'confidence': card_prediction_dict['confidence']
-                })()
+                from app.models.schemas import CardPrediction
+                card_prediction = CardPrediction(
+                    home_team_cards=card_prediction_dict['home_team_cards'],
+                    away_team_cards=card_prediction_dict['away_team_cards'],
+                    total_cards=card_prediction_dict['total_cards'],
+                    confidence=card_prediction_dict['confidence']
+                )
                 logger.info(f"Advanced cards prediction: {card_prediction.total_cards} total cards")
             except Exception as e:
                 logger.warning(f"Advanced cards prediction failed, using fallback: {e}")
@@ -371,12 +372,13 @@ class MatchAnalyzer:
             
             try:
                 corner_prediction_dict = await self.advanced_ml.predict_corners_advanced(match_data)
-                corner_prediction = type('CornerPrediction', (), {
-                    'home_team_corners': corner_prediction_dict['home_team_corners'],
-                    'away_team_corners': corner_prediction_dict['away_team_corners'],
-                    'total_corners': corner_prediction_dict['total_corners'],
-                    'confidence': corner_prediction_dict['confidence']
-                })()
+                from app.models.schemas import CornerPrediction
+                corner_prediction = CornerPrediction(
+                    home_team_corners=corner_prediction_dict['home_team_corners'],
+                    away_team_corners=corner_prediction_dict['away_team_corners'],
+                    total_corners=corner_prediction_dict['total_corners'],
+                    confidence=corner_prediction_dict['confidence']
+                )
                 logger.info(f"Advanced corners prediction: {corner_prediction.total_corners} total corners")
             except Exception as e:
                 logger.warning(f"Advanced corners prediction failed, using fallback: {e}")

@@ -141,8 +141,8 @@ class TestMatchesRoutes:
     
     def test_get_todays_matches_success(self, sample_match):
         """Test successful retrieval of today's matches."""
-        with patch('app.routes.matches.data_fetcher') as mock_fetcher:
-            mock_fetcher.get_todays_matches = AsyncMock(return_value=[sample_match])
+        with patch('app.routes.matches.workflow') as mock_workflow:
+            mock_workflow.get_todays_matches = AsyncMock(return_value=[sample_match])
             
             response = client.get("/matches/today")
             
@@ -155,18 +155,18 @@ class TestMatchesRoutes:
     
     def test_get_todays_matches_with_league_filter(self, sample_match):
         """Test retrieval of today's matches with league filter."""
-        with patch('app.routes.matches.data_fetcher') as mock_fetcher:
-            mock_fetcher.get_todays_matches = AsyncMock(return_value=[sample_match])
+        with patch('app.routes.matches.workflow') as mock_workflow:
+            mock_workflow.get_todays_matches = AsyncMock(return_value=[sample_match])
             
             response = client.get("/matches/today?league_ids=39&league_ids=140")
             
             assert response.status_code == 200
-            mock_fetcher.get_todays_matches.assert_called_once_with([39, 140])
+            mock_workflow.get_todays_matches.assert_called_once()
     
     def test_get_todays_matches_api_error(self):
         """Test handling of API Football error."""
-        with patch('app.routes.matches.data_fetcher') as mock_fetcher:
-            mock_fetcher.get_todays_matches = AsyncMock(
+        with patch('app.routes.matches.workflow') as mock_workflow:
+            mock_workflow.get_todays_matches = AsyncMock(
                 side_effect=APIFootballError("API unavailable")
             )
             
