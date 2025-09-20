@@ -31,12 +31,12 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: 📥 Checkout Code
+      - name: �� Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: �� Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -48,7 +48,7 @@ jobs:
           pip install -r requirements.txt
           pip install black isort flake8 mypy bandit safety
 
-      - name: �� Code Formatting (Black)
+      - name: 🎨 Code Formatting (Black)
         run: |
           echo "::group::Black Code Formatting"
           black --check --diff app/ tests/
@@ -67,7 +67,7 @@ jobs:
           flake8 app/ tests/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
           echo "::endgroup::"
 
-      - name: �� Security Check (bandit)
+      - name: 🛡️ Security Check (bandit)
         run: |
           echo "::group::Security Analysis"
           bandit -r app/ -f json -o bandit-report.json || true
@@ -81,7 +81,7 @@ jobs:
           safety check
           echo "::endgroup::"
 
-      - name: �� Upload Security Reports
+      - name: 📊 Upload Security Reports
         uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -102,7 +102,7 @@ jobs:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: �� Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -124,13 +124,13 @@ jobs:
   # TESTING
   # =============================================================================
   test:
-    name: 🧪 Testing
+    name: �� Testing
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     services:
       redis:
-        image: redis:${{ env.REDIS_VERSION }}
+        image: redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -180,7 +180,7 @@ jobs:
             -v
           echo "::endgroup::"
 
-      - name: �� Upload Coverage Reports
+      - name: 📊 Upload Coverage Reports
         uses: actions/upload-artifact@v3
         with:
           name: coverage-reports-${{ matrix.python-version }}
@@ -209,7 +209,7 @@ jobs:
 
     services:
       redis:
-        image: redis:${{ env.REDIS_VERSION }}
+        image: redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -222,7 +222,7 @@ jobs:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: �� Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -234,7 +234,7 @@ jobs:
           pip install -r requirements.txt
           pip install pytest-asyncio httpx
 
-      - name: �� Run Integration Tests
+      - name: 🔗 Run Integration Tests
         env:
           REDIS_URL: redis://localhost:6379/0
           ENVIRONMENT: test
@@ -278,10 +278,10 @@ jobs:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: �� Set up Docker Buildx
+      - name: 🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: �� Login to Docker Hub
+      - name: 🔐 Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -298,7 +298,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: �� Test Docker Image
+      - name: 🧪 Test Docker Image
         run: |
           echo "::group::Docker Image Test"
           docker run --rm -d --name test-container -p 8000:8000 \
@@ -323,7 +323,7 @@ jobs:
 
     services:
       redis:
-        image: redis:${{ env.REDIS_VERSION }}
+        image: redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -336,7 +336,7 @@ jobs:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: �� Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -397,7 +397,7 @@ jobs:
           format: "sarif"
           output: "trivy-results.sarif"
 
-      - name: 📊 Upload Trivy Scan Results
+      - name: �� Upload Trivy Scan Results
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: "trivy-results.sarif"
@@ -417,7 +417,7 @@ jobs:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🚀 Deploy to Staging
+      - name: �� Deploy to Staging
         run: |
           echo "::group::Staging Deployment"
           echo "Deploying to staging environment..."
